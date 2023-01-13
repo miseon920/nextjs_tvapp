@@ -6,12 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-console.log(process.env);
-
 //next.js는 api key를 숨길 수 있음 -> next.config.js 에 적음
 // const base_url = "https://api.themoviedb.org/3";
 // const api_key = "69a4874992de52f7b5e2e351c836a898";
-
 const Home = ({results}) => {
     const router = useRouter();
     const conClick = (id, title,image) => { 
@@ -26,6 +23,7 @@ const Home = ({results}) => {
         
         //타이틀 표시를 위해 바꿔줌
         router.push(`/tvs/${title}/${id}${image}`);
+        //router.events.on(`routeChangeComplete`,`/tvs/${title}/${id}`);
 
         //a태그가 div를 싸서 하는것은 보기가 안좋으므로 onClick으로 처리하여 위의 형식으로 네이게이팅함/ 사실 html5부터는 문제없음으로 바뀜
         /*
@@ -57,7 +55,7 @@ const Home = ({results}) => {
     //     })();
     // },[])
   return (
-      <div>
+      <div className='tv_box'>
           {/* <h1>myCounter {counter}</h1>
           <button onClick={()=>setCounter(prev =>counter+1)}>counter</button> */}
           {/* <Head>
@@ -67,7 +65,15 @@ const Home = ({results}) => {
           {/* {!tvs && <h4>로딩중...</h4> api를 불러오기 전에 보여줄 로딩 페이지 */ } 
           {results?.map(tv => ( //tv가 없다면 실행안함
               <div  className="tv" key={tv.id} onClick={()=>conClick(tv.id,tv.original_name,tv.poster_path)}>
-                  <h4>
+                    {tv.poster_path &&
+                        <Image
+                            src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}
+                            alt={tv.name}
+                            width={320}
+                            height={400}
+                        ></Image>
+                  }
+                     <h4>
                       {/* <Link href={`/tvs/${tv.id}`}> - url을 마스킹하기 위해 아래처럼 바꿔준다*/}
                       {/* <Link href={{
                           pathname: `/tvs/${tv.id}`,
@@ -78,14 +84,6 @@ const Home = ({results}) => {
                       {/* <Link href={`/tvs/${tv.original_name}/${tv.id}`}> */}
                      
                     {tv.original_name}</h4>
-                    {tv.poster_path &&
-                        <Image
-                            src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}
-                            alt={tv.name}
-                            width={120}
-                            height={190}
-                        ></Image>
-                    }
             </div>
           ))}
       </div>

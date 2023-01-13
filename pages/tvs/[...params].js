@@ -16,22 +16,45 @@ const Detail = ({params}) => {
     컴포넌트 내부에 쓰인 router의 경우 클라이언트 사이드에서만 실행된다.
   */ 
   return (
-    <div>
-        <Seo title={title} />
-          <h4>
-              {/* {router.query.title || "로딩중..." } */}
-        {title} 
+    <div className='detail'>
+      <Seo title={title} />
+      <ul>
+        <li>{title} </li>
+        <li>{id}</li>
         { imgage &&
+        <li> 
           <Image
                 src={`https://image.tmdb.org/t/p/w500/${imgage}`}
                 alt={title}
-                width={120}
-                height={190}
+                width={520}
+                height={500}
           ></Image>        
+          </li>
         }
-
-        {id }
-          </h4>
+      </ul>
+      {/* 
+      <h4>
+              {router.query.title || "로딩중..." }   
+      </h4>*/}
+      <style jsx global>{`
+        .detail ul{
+          display: flex;
+          flex-wrap: wrap;
+          gap: 50px;
+        }
+        .detail ul li{
+          flex: 1 1 40%;
+          font-size:21px;
+          font-weight:600
+        }
+        .detail ul li:nth-child(2){
+          text-align: right;
+        }
+        .detail ul li:last-child{
+          text-align: center;
+        }
+        `}
+        </style>
     </div>
   )
 }

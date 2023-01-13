@@ -3,6 +3,7 @@
     gap:15px;
     /* justify-content: flex-end; */
     align-items: center;
+    margin-top:15px;
 }
 .nav li{
     list-style: none;
@@ -10,10 +11,10 @@
 .nav li a{
     color:black;
     text-decoration: none;
-
+    font-size:18px;
 }
 .nav li a.active{
-    color:gold;
+    color:red;
 }
 .link{
     /* text-decoration: none; */

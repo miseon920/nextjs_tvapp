@@ -6,16 +6,19 @@ import Image from 'next/image'
 
 const NavBar = () => {
   const router = useRouter();
+  console.log(router)
   //console.log(router); - pathname, route:, query: {…}, asPath, components 등이 들어있음
   return (
     <nav>
       {/* <img src="" alt="" />  */}
-      <Image
-        src="/logo.png"
-        alt="logo"
-        width={170}
-        height={20}
-      />
+      <Link href="/">
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={170}
+          height={20}
+        />
+      </Link>
       <ul className={`nav_box ${styles.nav}`}>
         <li>
             {/* <a href="/">Home</a> 
@@ -41,9 +44,6 @@ const NavBar = () => {
           {/*13버전부터 legacyBehavior를 쓰면 a를 안에 쓸수 있음, 하지만 13버전부터 위의 사항이 적용되어 그냥씀  */}
           {/* <Link href="/about">About</Link> */}
         </li>
-        {/* <li>
-            <Link href="/contact" legacyBehavior  className='link'><a>Contact</a></Link>
-        </li> */}
       </ul>
     </nav>
     /* styled jsx - 다른파일에서 .nav_box를 정의해도 현재 컴포넌트에 영향을 주지 않음 */    
