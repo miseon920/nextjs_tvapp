@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
 import Seo from '../../components/Seo';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 const Detail = ({params}) => {
   const router = useRouter();
@@ -12,6 +13,7 @@ const Detail = ({params}) => {
     이부분은 csr만 해결되므로 console확인시 html이 비어있는것이 확인 됨/ 데이터빌드시 사용되는 getServerSideProps 를 이용한다.
   */
   console.log(router);
+
   /*
     컴포넌트 내부에 쓰인 router의 경우 클라이언트 사이드에서만 실행된다.
   */ 
@@ -63,6 +65,7 @@ export default Detail
 
 export function getServerSideProps({ params: { params} }) { //server side context를 제공해주므로
   console.log(params); //sevver에 params이 생성됨, 유저에게 로딩을 보여주고 싶지 않고 seo에 친화적으로 만들기 위해 getServerSideProps 사용
+  //const postData = params;
   return {
     props: { params},
   }

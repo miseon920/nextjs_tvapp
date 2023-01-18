@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const NavBar = () => {
   const router = useRouter();
-  console.log(router)
+  //console.log(router)
   //console.log(router); - pathname, route:, query: {…}, asPath, components 등이 들어있음
   return (
     <nav>
