@@ -23,7 +23,7 @@ const Home = ({results}) => {
         // );
         
         //타이틀 표시를 위해 바꿔줌
-        router.push(`/tvs/${title}/${id}${image}`);
+        router.push(`/tvs/${title}/${id}`);
         //router.events.on(`routeChangeComplete`,`/tvs/${title}/${id}`);
 
         //a태그가 div를 싸서 하는것은 보기가 안좋으므로 onClick으로 처리하여 위의 형식으로 네이게이팅함/ 사실 html5부터는 문제없음으로 바뀜
