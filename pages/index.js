@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 // const api_key = "69a4874992de52f7b5e2e351c836a898";
 const Home = ({results}) => {
     const router = useRouter();
-
+    console.log(results);
     const conClick = (id, title, image) => {
         //router.push(`/tvs/${id}`); //이렇게 쓸수도 있지만
         // router.push({//객체로 쓸수도 있음 - url로 state를 넘기기 위해 사용
