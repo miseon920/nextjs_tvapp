@@ -1,8 +1,8 @@
 
 /** @type {import('next').NextConfig} */
 
-const api_url = process.env.API_URL;
-const api_key = process.env.API_KEY;
+const api_url = process.env.NEXT_PUBLIC_API_URL;
+const api_key = process.env.NEXT_PUBLIC_API_KEY;
 
 const nextConfig = {
   reactStrictMode: true,
