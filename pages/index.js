@@ -5,13 +5,14 @@ import Seo from '../components/Seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 
 //next.js는 api key를 숨길 수 있음 -> next.config.js 에 적음
 // const base_url = "https://api.themoviedb.org/3";
 // const api_key = "69a4874992de52f7b5e2e351c836a898";
 const Home = ({results}) => {
     const router = useRouter();
-    console.log(results);
+    //console.log(results);
     const conClick = (id, title, image) => {
         //router.push(`/tvs/${id}`); //이렇게 쓸수도 있지만
         // router.push({//객체로 쓸수도 있음 - url로 state를 넘기기 위해 사용
@@ -98,11 +99,12 @@ export async function getServerSideProps() {
 //로딩이라는것이 보기 싫은 사람도 있음, 서버에서 일어나는 일이 모두 끝나구 랜더하길 바랄때
 //데이터가 모두 들어오고 랜더 하길 원할때
 //이곳코드는 서버에서 돌아감, 서버상황이 끝날때 까지 클라이언트에서 볼수없음
-    const { results } = await (await fetch(`${process.env.NEXT_PUBLIC_URL}/apis/tvs`)).json();
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_URL}/apis/tvs`);
+    const results = data.results;
     return {
-         props: {
-            //results: JSON.parse(JSON.stringify(results)),
-             results
+        props: {
+            results: JSON.parse(JSON.stringify(results)),
+            //results
         },
         // props: {
         //     results, //리턴값을 받을 페이지에 props로 넣어줌
