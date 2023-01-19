@@ -98,7 +98,7 @@ export async function getServerSideProps() {
 //로딩이라는것이 보기 싫은 사람도 있음, 서버에서 일어나는 일이 모두 끝나구 랜더하길 바랄때
 //데이터가 모두 들어오고 랜더 하길 원할때
 //이곳코드는 서버에서 돌아감, 서버상황이 끝날때 까지 클라이언트에서 볼수없음
-    const { results } = await (await fetch(`http://localhost:3000/api/tvs`)).json();
+    const { results } = await (await fetch(`http://localhost:3000/info/tvs`)).json();
     return {
          props: {
             results: JSON.parse(JSON.stringify(results)),
