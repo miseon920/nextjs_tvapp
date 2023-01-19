@@ -48,13 +48,13 @@ const Home = ({results}) => {
     // console.log(tvs);
     //const [counter, setCounter] = useState(0);
 
-    // useEffect(() => { 
-    //     (async () => { 
-    //         const {results} = await (await fetch(`/api/tvs`)).json();
-    //         //const json = await res.json(); await으로 한번더 감싸서 줄이기
-    //         setTvs(results);
-    //     })();
-    // },[])
+    useEffect(() => { 
+        (async () => { 
+            const {results} = await (await fetch(`${process.env.NEXT_PUBLIC_URL}/api/tvs`)).json();
+            //const json = await res.json(); await으로 한번더 감싸서 줄이기
+            setTvs(results);
+        })();
+    },[])
   return (
       <div className='tv_box'>
           {/* <h1>myCounter {counter}</h1>
