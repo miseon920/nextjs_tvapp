@@ -1,7 +1,7 @@
 
 /** @type {import('next').NextConfig} */
 
-const base_url = process.env.API_URL;
+const api_url = process.env.API_URL;
 const api_key = process.env.API_KEY;
 
 const nextConfig = {
@@ -31,11 +31,11 @@ const nextConfig = {
     return [
       {
         source: "/api/tvs", //api 주소를 숨김
-        destination: `${base_url}/tv/popular?api_key=${api_key}`, //진짜주소
+        destination: `${api_url}/tv/popular?api_key=${api_key}`, //진짜주소
       },
       {
         source: "/api/tvs/:id", //우리가 변수명을 id로 지정해줬기 때문에 맞춰줘야함
-        destination: `${base_url}/tv/:id?api_key=${api_key}`, //api 내에서 세부사항을 /tv/{tv_id} 받기 때문에 우리는 id로 지정해줘서 바꿔줌
+        destination: `${api_url}/tv/:id?api_key=${api_key}`, //api 내에서 세부사항을 /tv/{tv_id} 받기 때문에 우리는 id로 지정해줘서 바꿔줌
       }
     ]
   },
