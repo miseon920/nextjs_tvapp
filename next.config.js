@@ -6,24 +6,24 @@ const api_key = process.env.NEXT_PUBLIC_API_KEY;
 
 const nextConfig = {
   reactStrictMode: true,
-  async redirects() { //리다이렉션 시키기
-    return [
-      {
-        source: "/contact", //이동시킬곳 경로찾기
-        destination: "/form", //이동할곳 경로, 영구적인지 아닌지에 따라 검색엔진이 정보를 기억하는지 여부가 결정됨 - 쿠키같은것
-        permanent:false,
-      }
-    ]
-  },
-  async redirects() { //리다이렉션 시키기
-    return [
-      {
-        source: "/contact/:path", //:동적인주소, * 모두가능함
-        destination: "/form/:path", //:동적인주소, * 모두가능함
-        permanent:false,
-      }
-    ]
-  },
+  // async redirects() { //리다이렉션 시키기
+  //   return [
+  //     {
+  //       source: "/contact", //이동시킬곳 경로찾기
+  //       destination: "/form", //이동할곳 경로, 영구적인지 아닌지에 따라 검색엔진이 정보를 기억하는지 여부가 결정됨 - 쿠키같은것
+  //       permanent:false,
+  //     }
+  //   ]
+  // },
+  // async redirects() { //리다이렉션 시키기
+  //   return [
+  //     {
+  //       source: "/contact/:path", //:동적인주소, * 모두가능함
+  //       destination: "/form/:path", //:동적인주소, * 모두가능함
+  //       permanent:false,
+  //     }
+  //   ]
+  // },
   async rewrites() { //리롸이트 = 리다이렉트는 주소가 바뀔때 보이지만 리롸이트는 보이지않음 유저가 볼 수 없음
     return [
       {
