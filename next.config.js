@@ -6,6 +6,9 @@ const api_key = process.env.API_KEY;
 
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  },
   async redirects() { //리다이렉션 시키기
     return [
       {
