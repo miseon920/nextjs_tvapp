@@ -6,15 +6,15 @@ const api_key = process.env.API_KEY;
 
 const nextConfig = {
   reactStrictMode: true,
-  // async redirects() { //리다이렉션 시키기
-  //   return [
-  //     {
-  //       source: "/contact", //이동시킬곳 경로찾기
-  //       destination: "/form", //이동할곳 경로, 영구적인지 아닌지에 따라 검색엔진이 정보를 기억하는지 여부가 결정됨 - 쿠키같은것
-  //       permanent:false,
-  //     }
-  //   ]
-  // }
+  async redirects() { //리다이렉션 시키기
+    return [
+      {
+        source: "/contact", //이동시킬곳 경로찾기
+        destination: "/form", //이동할곳 경로, 영구적인지 아닌지에 따라 검색엔진이 정보를 기억하는지 여부가 결정됨 - 쿠키같은것
+        permanent:false,
+      }
+    ]
+  },
   async redirects() { //리다이렉션 시키기
     return [
       {
@@ -27,15 +27,65 @@ const nextConfig = {
   async rewrites() { //리롸이트 = 리다이렉트는 주소가 바뀔때 보이지만 리롸이트는 보이지않음 유저가 볼 수 없음
     return [
       {
-        source: "/info/tvs", //api 주소를 숨김
+        source: "/api/tvs", //api 주소를 숨김
         destination: `${base_url}/tv/popular?api_key=${api_key}`, //진짜주소
       },
       {
-        source: "/info/tvs/:id", //우리가 변수명을 id로 지정해줬기 때문에 맞춰줘야함
+        source: "/api/tvs/:id", //우리가 변수명을 id로 지정해줬기 때문에 맞춰줘야함
         destination: `${base_url}/tv/:id?api_key=${api_key}`, //api 내에서 세부사항을 /tv/{tv_id} 받기 때문에 우리는 id로 지정해줘서 바꿔줌
       }
     ]
   },
+//  async rewrites() {
+//     return {
+//       beforeFiles: [
+//         {
+//           source: "/api/tvs",
+//           destination: `${base_url}/tv/popular?api_key=${api_key}`,
+//           basePath: false,
+//         },
+//       ],
+//       afterFiles: [
+//         {
+//          source: "/api/tvs",
+//          destination: `${base_url}/tv/popular?api_key=${api_key}`,
+//          basePath: false,
+//         },
+//       ],
+//       fallback: [
+//         {
+//           source: "/api/tvs",
+//           destination: `${base_url}/tv/popular?api_key=${api_key}`,
+//           basePath: false,
+//         },
+//       ],
+//     };
+//   },
+//  async rewrites() {
+//     return {
+//       beforeFiles: [
+//         {
+//           source: "/api/tvs/:id",
+//           destination: `${base_url}/tv/:id?api_key=${api_key}`,
+//           basePath: false,
+//         },
+//       ],
+//       afterFiles: [
+//         {
+//          source: "/api/tvs/:id",
+//          destination: `${base_url}/tv/:id?api_key=${api_key}`,
+//          basePath: false,
+//         },
+//       ],
+//       fallback: [
+//         {
+//           source: "/api/tvs/:id",
+//           destination: `${base_url}/tv/:id?api_key=${api_key}`,
+//           basePath: false,
+//         },
+//       ],
+//     };
+//   },
   //이미지
   images: {
     domains: [
