@@ -104,7 +104,7 @@ export default Detail
 export async function getServerSideProps({ params: { params} }) { //server side context를 제공해주므로
    //sevver에 params이 생성됨, 유저에게 로딩을 보여주고 싶지 않고 seo에 친화적으로 만들기 위해 getServerSideProps 사용
   const id = params[1];
-  const result = await (await fetch(`${process.env.BASE_URL}/api/tvs/${id}`)).json();
+  const result = await (await fetch(`${process.env.NEXT_PUBLIC_URL}/api/tvs/${id}`)).json();
     
   return {
     props: {
