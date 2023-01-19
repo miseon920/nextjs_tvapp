@@ -1,6 +1,9 @@
 
 /** @type {import('next').NextConfig} */
 
+const api_url = process.env.NEXT_PUBLIC_API_URL;
+const api_key = process.env.NEXT_PUBLIC_API_KEY;
+
 const nextConfig = {
   reactStrictMode: true,
   async redirects() { //리다이렉션 시키기
@@ -25,11 +28,11 @@ const nextConfig = {
     return [
       {
         source: "/api/tvs", //api 주소를 숨김
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/tv/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}`, //진짜주소
+        destination: `${api_url}/tv/popular?api_key=${api_key}`, //진짜주소
       },
       {
         source: "/api/tvs/:id", //우리가 변수명을 id로 지정해줬기 때문에 맞춰줘야함
-        destination: `${process.env.NEXT_PUBLIC_API_URL}/tv/:id?api_key=${process.env.NEXT_PUBLIC_API_KEY}`, //api 내에서 세부사항을 /tv/{tv_id} 받기 때문에 우리는 id로 지정해줘서 바꿔줌
+        destination: `${api_url}/tv/:id?api_key=${api_key}`, //api 내에서 세부사항을 /tv/{tv_id} 받기 때문에 우리는 id로 지정해줘서 바꿔줌
       }
     ]
   },
